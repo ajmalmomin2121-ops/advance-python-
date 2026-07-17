@@ -72,5 +72,36 @@ while True:
     else:
         print("Invalid Choice!")
 
+'''
+Output:-
 
+===== Library Management System =====
+1. Add Book
+2. Display Books
+3. Borrow Book
+4. Return Book
+5. Exit
+Enter your choice: 1
+Enter book name: thrones
+Book added successfully.
+
+===== Library Management System =====
+1. Add Book
+2. Display Books
+3. Borrow Book
+4. Return Book
+5. Exit
+Enter your choice: 2
+
+Library Books:
+thrones - Available
+
+===== Library Management System =====
+1. Add Book
+2. Display Books
+3. Borrow Book
+4. Return Book
+5. Exit
+Enter your choice: 
+'''
         
