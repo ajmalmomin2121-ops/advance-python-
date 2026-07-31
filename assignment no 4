@@ -25,3 +25,9 @@ if __name__ == "__main__":
     number = int(input("Enter the value of n: "))
     calculator = FibonacciCalculator(number)
     calculator.display_result()
+
+
+
+
+ Enter the value of n: 10
+The 10th Fibonacci number is: 55
