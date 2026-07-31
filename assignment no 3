@@ -112,7 +112,7 @@ receipt2 = processor.process_payment(2500)
 
 
 
-
+output----------------------------------------------------------
 [LOG] Starting payment processing...
 [LOG] Result: [SUCCESS] Txn #0415ce87 | UPI | $1500 at 2026-07-31 19:51:05
 [LOG] Starting payment processing...
