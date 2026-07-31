@@ -1,0 +1,109 @@
+from abc import ABC, abstractmethod
+import datetime
+import uuid
+
+
+class Receipt:
+
+  def __init__(self, amount, method, status):
+    self.txn_id = str(uuid.uuid4())[:8]
+    self.amount = amount
+    self.method = method
+    self.status = status
+    self.timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+  def __str__(self):
+    return f"[{self.status}] Txn #{self.txn_id} | {self.method} | ${self.amount} at {self.timestamp}"
+
+
+class PaymentStrategy(ABC):
+
+  name = "Generic"
+
+  @abstractmethod
+  def validate(self):
+    pass
+
+  @abstractmethod
+  def pay(self, amount):
+    pass
+
+
+class UPIPayment(PaymentStrategy):
+
+  name = "UPI"
+
+  def __init__(self, upi_id):
+    self.upi_id = upi_id
+
+  def validate(self):
+    return "@" in self.upi_id
+
+  def pay(self, amount):
+    status = "SUCCESS" if self.validate() else "FAILED"
+    return Receipt(amount, self.name, status)
+
+
+class CreditCardPayment(PaymentStrategy):
+
+  name = "Credit Card"
+
+  def __init__(self, card_num, cvv):
+    self.card_num = card_num
+    self.cvv = cvv
+
+  def validate(self):
+    return len(self.card_num) == 16 and len(self.cvv) == 3
+
+  def pay(self, amount):
+    status = "SUCCESS" if self.validate() else "FAILED"
+    return Receipt(amount, self.name, status)
+
+
+def log_transaction(func):
+
+  def wrapper(*args, **kwargs):
+    print("[LOG] Starting payment processing...")
+    result = func(*args, **kwargs)
+    print(f"[LOG] Result: {result}")
+    return result
+
+  return wrapper
+
+
+class PaymentProcessor:
+
+  _registry = {}
+
+  def __init__(self, strategy=None):
+    self.strategy = strategy
+
+  def set_strategy(self, strategy):
+    self.strategy = strategy
+
+  @log_transaction
+  def process_payment(self, amount):
+    if not self.strategy:
+      raise ValueError("No payment strategy configured!")
+    return self.strategy.pay(amount)
+
+  @classmethod
+  def register_strategy(cls, key, strategy_cls):
+    cls._registry[key] = strategy_cls
+
+  @classmethod
+  def create(cls, key, **kwargs):
+    strategy_cls = cls._registry[key]
+    return cls(strategy_cls(**kwargs))
+
+
+PaymentProcessor.register_strategy("upi", UPIPayment)
+PaymentProcessor.register_strategy("card", CreditCardPayment)
+
+processor = PaymentProcessor.create("upi", upi_id="user@bank")
+receipt1 = processor.process_payment(1500)
+
+processor.set_strategy(
+    CreditCardPayment(card_num="1234567812345678", cvv="123")
+)
+receipt2 = processor.process_payment(2500)
