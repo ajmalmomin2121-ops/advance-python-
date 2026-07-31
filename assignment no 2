@@ -38,7 +38,7 @@ report1.generate_report()
 
 
 
-
+output
 ========================================
 Title: Sales Report
 Template: Executive Summary
