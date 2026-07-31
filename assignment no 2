@@ -33,6 +33,23 @@ class ReportGenerator:
 report1 = ReportGenerator("Sales Report", "Sales went up by 15% this month.", "executive")
 report1.generate_report()
 
+
+
+
+
+
+
+========================================
+Title: Sales Report
+Template: Executive Summary
+Content: Sales went up by 15% this month.
+========================================
+========================================
+Title: Research Paper
+Template: Academic Format
+Content: Data analysis complete.
+========================================
+
 ReportGenerator.add_template("academic", "Academic Format")
 report2 = ReportGenerator("Research Paper", "Data analysis complete.", "academic")
 report2.generate_report()
