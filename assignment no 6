@@ -43,3 +43,9 @@ if __name__ == "__main__":
     
     max_val_bottom_up = knapsack_bottom_up(weights, values, capacity)
     print(max_val_bottom_up)
+
+
+    ----------------------------------------------------------------------------------
+    output -
+    220
+    220
