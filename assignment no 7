@@ -31,3 +31,15 @@ for string in test_strings:
         print(string, "- VALID")
     else:
         print(string, "- INVALID")
+
+
+-------------------------------------------------------------------------------------------------------------------------
+output 
+ajmal@ajmals-MacBook-Air / % /usr/local/bin/python3 /Users/ajmal/Documents/assign7.py
+Found emails: ['support@example.com', 'rahul_23@gmail.com']
+Count: 2
+user@site.com - VALID
+rahul_23@gmail.com - VALID
+@missing-local.com - INVALID
+invalid.email@ - INVALID
+number@12345.com - VALID
