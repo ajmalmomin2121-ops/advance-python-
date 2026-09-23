@@ -44,3 +44,40 @@ if __name__ == "__main__":
     print(f"Contents of '{output_path}':")
     with open(output_path, "r") as f:
         print(f.read())
+
+
+output 
+_________________________________________________________________________________________________________________
+ajmal@Mac / % /usr/local/bin/python3 /Users/ajmal/Documents/assign8.py
+Created sample CSV file: /Users/ajmal/Documents/students.csv
+
+Contents of '/Users/ajmal/Documents/students.csv':
+id,name,department,marks
+1,Aditi Sharma,Computer Science,88
+2,Rahul Verma,Mechanical,76
+3,Sneha Iyer,Electronics,92
+
+Converted 3 row(s) from CSV to JSON.
+JSON written to: /Users/ajmal/Documents/students.json
+
+Contents of '/Users/ajmal/Documents/students.json':
+[
+    {
+        "id": "1",
+        "name": "Aditi Sharma",
+        "department": "Computer Science",
+        "marks": "88"
+    },
+    {
+        "id": "2",
+        "name": "Rahul Verma",
+        "department": "Mechanical",
+        "marks": "76"
+    },
+    {
+        "id": "3",
+        "name": "Sneha Iyer",
+        "department": "Electronics",
+        "marks": "92"
+    }
+]
