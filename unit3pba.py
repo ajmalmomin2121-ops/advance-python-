@@ -12,3 +12,20 @@ with open('data.csv', mode='r', encoding='utf-8') as csv_file, \
     json.dump(data, json_file, indent=4)
 
 print("Conversion complete!")
+
+
+
+
+output------------------------------------------------------------------------------------------
+[
+    {
+        "name": "Alice",
+        "age": "30",
+        "city": "New York"
+    },
+    {
+        "name": "Bob",
+        "age": "25",
+        "city": "London"
+    }
+]
